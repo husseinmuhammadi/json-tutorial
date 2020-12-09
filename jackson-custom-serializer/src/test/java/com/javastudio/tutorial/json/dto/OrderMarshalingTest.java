@@ -22,7 +22,7 @@ class OrderMarshalingTest {
     }
 
     @Test
-    void serializeOrder() throws JsonProcessingException {
+    void serializeOrderUsingJsonSerializeAnnotation() throws JsonProcessingException {
         Order order = Order.builder()
                 .id(10)
                 .orderDate(new Date())
@@ -32,6 +32,7 @@ class OrderMarshalingTest {
                                 .name("Erik")
                                 .build()
                 ).build();
+        // This will use JsonSerialize annotation if it specifies
         LOGGER.info(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(order));
     }
 
