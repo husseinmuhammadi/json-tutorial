@@ -14,6 +14,7 @@
         <module>jackson-annotation</module>
         <module>jackson-ignore-properties-on-marshalling</module>
         <module>jackson-serialization-ignore-empty-values</module>
+        <module>jackson-custom-serializer</module>
     </modules>
 
     <properties>
