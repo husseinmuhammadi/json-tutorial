@@ -13,6 +13,7 @@
         <module>logger</module>
         <module>jackson-annotation</module>
         <module>jackson-ignore-properties-on-marshalling</module>
+        <module>jackson-serialization-ignore-empty-values</module>
     </modules>
 
     <properties>
