@@ -9,8 +9,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class OrderMarshalingTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomerMarshalingTest.class);
 
@@ -23,7 +21,15 @@ class OrderMarshalingTest {
 
     @Test
     void serializeOrder() throws JsonProcessingException {
-        Order order = Order.builder().id(10).orderDate(new Date()).customer(Customer.builder().id(10).name("Erik").build()).build();
+        Order order = Order.builder()
+                .id(10)
+                .orderDate(new Date())
+                .customer(
+                        Customer.builder()
+                                .id(10)
+                                .name("Erik")
+                                .build()
+                ).build();
         LOGGER.info(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(order));
     }
 }
