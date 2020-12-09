@@ -1,7 +1,11 @@
 package com.javastudio.tutorial.json.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.javastudio.tutorial.json.dto.serializer.OrderSerializer;
+
 import java.util.Date;
 
+// @JsonSerialize(using = OrderSerializer.class)
 public class Order {
     private final int id;
     private final Date orderDate;

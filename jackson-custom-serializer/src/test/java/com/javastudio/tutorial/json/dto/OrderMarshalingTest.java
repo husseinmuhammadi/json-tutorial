@@ -2,6 +2,8 @@ package com.javastudio.tutorial.json.dto;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.javastudio.tutorial.json.dto.serializer.OrderSerializer;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -30,6 +32,23 @@ class OrderMarshalingTest {
                                 .name("Erik")
                                 .build()
                 ).build();
+        LOGGER.info(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(order));
+    }
+
+    @Test
+    void serializeOrderWithCustomSerializer() throws JsonProcessingException {
+        Order order = Order.builder()
+                .id(10)
+                .orderDate(new Date())
+                .customer(
+                        Customer.builder()
+                                .id(10)
+                                .name("Erik")
+                                .build()
+                ).build();
+        SimpleModule module = new SimpleModule();
+        module.addSerializer(Order.class, new OrderSerializer());
+        mapper.registerModule(module);
         LOGGER.info(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(order));
     }
 }

@@ -7,8 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Date;
-
 class CustomerMarshalingTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomerMarshalingTest.class);
 
@@ -21,7 +19,10 @@ class CustomerMarshalingTest {
 
     @Test
     void serializeCustomer() throws JsonProcessingException {
-        Customer customer = Customer.builder().id(10).name("Erik").build();
+        Customer customer = Customer.builder()
+                .id(10)
+                .name("Erik")
+                .build();
         LOGGER.info(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(customer));
     }
 }
